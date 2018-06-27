@@ -58,7 +58,11 @@ $Client->websites()->addQueryData(['page' => 1, 'per_page' => 10])->via('get');
 
 ## Installation
 
+Recommended installation is via [Composer](https://getcomposer.org/) and [Packagist](https://packagist.org/packages/rapidspike/rapidspike-api-binding-php). Check the available version tags, however, development won't be overly active due to to nature of the package.
 
+```
+composer require rapidspike/rapidspike-api-binding-php
+```
 
 ## Usage example
 
