@@ -8,7 +8,17 @@ RapidSpike provides a RESTful API designed to make interfacing with their servic
 
 To interact with the API you must first have a RapidSpike subscription that allows access to the API. Then you need to generate API keys in your [account settings area](https://my.rapidspike.com/#/account/my-account/account-settings?tab=api).
 
-This wrapper package is future proof as new end-points become available - it is mearly a wrapper that provides a standardised way to create end-points, package request data and authenticate in the API.
+This wrapper package is future proof as new end-points become available - it is merely a wrapper that provides a standardised way to construct end-points, package request data and authenticate in the API.
+
+
+## Installation
+
+Recommended installation is via [Composer](https://getcomposer.org/) and [Packagist](https://packagist.org/packages/rapidspike/rapidspike-api-wrapper-php). Check the available version tags, however, development won't be overly active due to to nature of the package.
+
+```
+composer require rapidspike/rapidspike-api-wrapper-php
+```
+
 
 ## Concepts
 
@@ -56,13 +66,6 @@ $Client->websites()->via('get');
 $Client->websites()->addQueryData(['page' => 1, 'per_page' => 10])->via('get');
 ```
 
-## Installation
-
-Recommended installation is via [Composer](https://getcomposer.org/) and [Packagist](https://packagist.org/packages/rapidspike/rapidspike-api-wrapper-php). Check the available version tags, however, development won't be overly active due to to nature of the package.
-
-```
-composer require rapidspike/rapidspike-api-wrapper-php
-```
 
 ## Usage example
 
@@ -85,6 +88,7 @@ $Websites = $Client->websites()->via('get');
 $uuid = $Websites->data->websites[0]->website->uuid;
 $Website = $Client->websites($uuid)->addQueryData(['stats' => 'status,average_response,passing_monitors,failing_monitors,total_monitors'])->via('get');
 ```
+
 
 Contact
 -------
