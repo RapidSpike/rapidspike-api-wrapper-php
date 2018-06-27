@@ -1,0 +1,21 @@
+{
+    "name": "rapidspike/rapidspike-api-binding-php",
+    "description": "PHP wrapper functions for interfacing with RapidSpike's API.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Tyler",
+            "email": "james.tyler@rapidspike.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "RapidSpike": "src/"
+        }
+    }
+}
