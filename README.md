@@ -13,13 +13,14 @@ This bindings package is future proof as new end-points become available - it is
 ## Concepts
 
 #### End-point Chaining
-This bindings package is very simple, but provides you with a standard way to call our API. End-points are built using a function per path segment or directly in the `call()` method. This makes use of magic methods so that we're future proofed against new end-points.
+This bindings package is very simple, but provides you with a standard way to call our API. End-points are built using a function-per-path segment or directly in the `call()` method. This makes use of magic methods so that we're future proofed against new end-points.
 ```
 /* 
  * Read account API keys
- *      GET /accounts/api
+ * GET /accounts/api
  */
-# Function per path method 
+
+# Function-per-path method 
 $Client->accounts()->api()->via('get');
 
 # call() method
@@ -30,8 +31,10 @@ If you need to add a value that doesn't fit into this method or is stored in a v
 ```
 /* 
  * Read one website
- *      GET /websites/[uuid]
+ * GET /websites/[uuid]
  */
+
+# Segment (UUID) stored in varibale and passed as function param
 $uuid = '30031b9b-5df8-4b19-8dfe-17bf5bac7654';
 $Client->websites($uuid)->via('get');
 ```
@@ -44,6 +47,7 @@ Adding query or JSON data can be done in or before the method chain. Either way 
 /*
  * Read page 1 of all websites with 10 displayed per page
  */
+
 # Add query data before the actual request is made
 $Client->addQueryData(['page' => 1, 'per_page' => 10]);
 $Client->websites()->via('get');
