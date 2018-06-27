@@ -6,7 +6,9 @@
  * in the RapidSpike API. Nothing fancy, just showing basic functionality.
  *
  * Usage:
- *      php basic-test.php url='https://api.rapidspike.com/v1/'
+ *      php basic-test.php url='https://api.rapidspike.com' \
+ *          public_key='rapidspike-ertbwtb' \
+ *          private_key='**********************************************'
  *
  * =============================================================================
  */
@@ -35,7 +37,7 @@ if (!isset($params['url'])) {
 }
 
 try {
-    $obj = new RapidSpike\API\Client($params['url']);
+    $obj = new RapidSpike\API\Client($params['public_key'], $params['private_key'], $params['url']);
 
     /*
      * Test GET
