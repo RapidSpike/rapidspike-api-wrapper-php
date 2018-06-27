@@ -25,9 +25,9 @@
  */
 
 /*
- * RapidSpike API Binding (PHP)
+ * RapidSpike API Wrapper (PHP)
  *
- * @package  rapidspike/rapidspike-api-binding-php
+ * @package  rapidspike/rapidspike-api-wrapper-php
  * @author   James Tyler <james.tyler@rapidspike.com>
  * @license  MIT
  */
@@ -80,7 +80,7 @@ class Request
             RequestOptions::TIMEOUT => $this->Scope->timeout,
             RequestOptions::HEADERS => [
                 'Accept' => 'application/json',
-                'User-Agent' => "RapidSpike-API-Binding-v{$this->Scope->version}",
+                'User-Agent' => "RapidSpike-API-Wrapper-v{$this->Scope->version}",
             ],
         ];
 

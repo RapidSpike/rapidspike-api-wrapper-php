@@ -25,9 +25,9 @@
  */
 
 /*
- * RapidSpike API Binding (PHP)
+ * RapidSpike API Wrapper (PHP)
  *
- * @package  rapidspike/rapidspike-api-binding-php
+ * @package  rapidspike/rapidspike-api-wrapper-php
  * @author   James Tyler <james.tyler@rapidspike.com>
  * @license  MIT
  */

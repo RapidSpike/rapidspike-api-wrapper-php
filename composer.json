@@ -1,5 +1,5 @@
 {
-    "name": "rapidspike/rapidspike-api-binding-php",
+    "name": "rapidspike/rapidspike-api-wrapper-php",
     "description": "PHP wrapper functions for interfacing with RapidSpike's API.",
     "license": "MIT",
     "authors": [
