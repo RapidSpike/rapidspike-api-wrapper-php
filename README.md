@@ -1,6 +1,6 @@
-# RapidSpike API Binding (PHP)
+# RapidSpike API Wrapper (PHP)
 
-PHP bindings for the [RapidSpike API](https://docs.rapidspike.com/system-api) (v1).
+PHP wrapper for the [RapidSpike API](https://docs.rapidspike.com/system-api) (v1).
 
 ## Information
 
@@ -8,12 +8,12 @@ RapidSpike provides a RESTful API designed to make interfacing with their servic
 
 To interact with the API you must first have a RapidSpike subscription that allows access to the API. Then you need to generate API keys in your [account settings area](https://my.rapidspike.com/#/account/my-account/account-settings?tab=api).
 
-This bindings package is future proof as new end-points become available - it is mearly a wrapper that provides a standardised way to create end-points, package request data and authenticate in the API.
+This wrapper package is future proof as new end-points become available - it is mearly a wrapper that provides a standardised way to create end-points, package request data and authenticate in the API.
 
 ## Concepts
 
 #### End-point Chaining
-This bindings package is very simple, but provides you with a standard way to call our API. End-points are built using a function-per-path segment or directly in the `call()` method. This makes use of magic methods so that we're future proofed against new end-points.
+This wrapper package is very simple, but provides you with a standard way to call our API. End-points are built using a function-per-path segment or directly in the `call()` method. This makes use of magic methods so that we're future proofed against new end-points.
 ```
 /* 
  * Read account API keys
@@ -58,10 +58,10 @@ $Client->websites()->addQueryData(['page' => 1, 'per_page' => 10])->via('get');
 
 ## Installation
 
-Recommended installation is via [Composer](https://getcomposer.org/) and [Packagist](https://packagist.org/packages/rapidspike/rapidspike-api-binding-php). Check the available version tags, however, development won't be overly active due to to nature of the package.
+Recommended installation is via [Composer](https://getcomposer.org/) and [Packagist](https://packagist.org/packages/rapidspike/rapidspike-api-wrapper-php). Check the available version tags, however, development won't be overly active due to to nature of the package.
 
 ```
-composer require rapidspike/rapidspike-api-binding-php
+composer require rapidspike/rapidspike-api-wrapper-php
 ```
 
 ## Usage example
