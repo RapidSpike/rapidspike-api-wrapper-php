@@ -87,9 +87,12 @@ class Client
      *
      * @param string $url
      */
-    public function __construct(string $public_key, string $private_key, string $url = 'https://api.rapidspike.com')
+    public function __construct(string $public_key = false, string $private_key = false, string $url = 'https://api.rapidspike.com')
     {
-        $this->KeyAuth = new KeyAuth($public_key, $private_key);
+        if ($public_key !== false && $private_key !== false) {
+            $this->KeyAuth = new KeyAuth($public_key, $private_key);
+        }
+
         $this->url = rtrim($url, '/') . '/v1/';
     }
 
