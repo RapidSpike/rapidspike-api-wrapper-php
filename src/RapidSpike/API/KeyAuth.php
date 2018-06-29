@@ -92,7 +92,7 @@ class KeyAuth
 
         // SHA1 hash using the private key and then URL encode the signature
         $bin_signature = hash_hmac(self::SIGNATURE_ALGO, $package, $this->private_key, true);
-        $uri_signature = urlencode(base64_encode($bin_signature));
+        $uri_signature = base64_encode($bin_signature);
 
         // Build an array of things the auth signature needs
         $arrSignature = array(
