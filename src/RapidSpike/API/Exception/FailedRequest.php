@@ -36,14 +36,31 @@ use Psr\Http\Message\ResponseInterface;
 class FailedRequest extends BadResponseException
 {
 
-    public static function exceptionFactory($message, RequestInterface $request, ResponseInterface $response = null)
+    private static $ApiResponse = null;
+
+    /**
+     * @return \stdClass
+     */
+    public function getApiResponse()
     {
-        $exceptionClass = __CLASS__;
+        return self::$ApiResponse;
+    }
 
-        /** @var BadResponseException $exception */
-        $exception = new $exceptionClass($message, $request, $response);
+    /**
+     * @param string $message
+     * @param RequestInterface $request
+     * @param ResponseInterface $response
+     *
+     * @return \self
+     */
+    public static function exceptionFactory(string $message, RequestInterface $request, ResponseInterface $response = null)
+    {
+        if ($response !== null) {
+            self::$ApiResponse = \GuzzleHttp\json_decode($response->getBody()->getContents());
+        }
 
-        return $exception;
+        /** @var FailedRequest $exception */
+        return new self($message, $request, $response);
     }
 
 }

@@ -67,5 +67,6 @@ try {
 
     echo PHP_EOL, 'Pass', PHP_EOL;
 } catch (\Exception $e) {
-    echo 'Fail', PHP_EOL, $e->getMessage(), PHP_EOL;
+    echo 'Fail', PHP_EOL, $e->getMessage(), PHP_EOL, PHP_EOL;
+    echo json_encode($e->getApiResponse(), JSON_PRETTY_PRINT), PHP_EOL;
 }

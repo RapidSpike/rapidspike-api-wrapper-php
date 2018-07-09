@@ -140,7 +140,7 @@ class Request
             // If a endpoint is called that does not exist, give a slightly easier to understand error.
             if ($ClientException->getResponse()->getStatusCode() == 404) {
                 throw Exception\FailedRequest::exceptionFactory(
-                        "RapidSpike responded with a 404 for {$this->Scope->url} {$path} via {$method}. Check your call.", $ClientException->getRequest(), $ClientException->getResponse()
+                        "RapidSpike responded with a 404 for {$this->Scope->url}{$path} via {$method}.", $ClientException->getRequest(), $ClientException->getResponse()
                 );
             }
 
