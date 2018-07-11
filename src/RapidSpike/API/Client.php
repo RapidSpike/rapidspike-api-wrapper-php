@@ -139,27 +139,27 @@ class Client
     }
 
     /**
-     * Magic method to allow API calls to be constructed via
-     * method chaining. ie: $call->server()->properties() will
-     * result in a endpoint location of BASE_URL/server/properties/.
+     * Magic method to allow API calls to be constructed via method chaining.
+     * ie: $call->server()->properties() will result in a end-point path
+     * of BASE_URL/server/properties
      *
      * Magic method arguments will also be parsed as part of the call.
-     * ie: $call->make('server', 'properties') will result in a
-     * endpoint location of BASE_URL/server/properties/
+     * ie: $call->websites($website_id) will result in an end-point path
+     * of BASE_URL/websites/5
      *
-     * @param string $path The API endpoint to call
-     * @param array $arrSlug Any arguments to parse as part of the location
+     * @param string $path The API end-point to call
+     * @param array $arrSlug Any arguments to parse as part of the path
      *
      * @return $this
      */
     public function __call(string $path, array $arrSlug)
     {
         // Ensure the location is lowercase
-        $this->path .= ltrim(strtolower($path), '/') . '/';
+        $this->path .= $this::standardisePath($path);
 
         if (!empty($arrSlug)) {
             foreach ($arrSlug as $slug_value) {
-                $this->path .= $slug_value . '/';
+                $this->path .= $this::standardisePath($slug_value);
             }
         }
 
@@ -178,6 +178,19 @@ class Client
         // Remove the first slash if its there
         $this->path = $this::standardisePath($path);
         return $this;
+    }
+
+    /**
+     * Standardises URL segment paths for other methods. Lowers the path,
+     * trims any slash off the left and adds one to the right.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    private static function standardisePath(string $path)
+    {
+        return ltrim(strtolower($path), '/') . '/';
     }
 
     /**
