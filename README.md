@@ -23,7 +23,7 @@ composer require rapidspike/rapidspike-api-wrapper-php
 ## Concepts
 
 #### End-point Chaining
-This wrapper package is very simple, but provides you with a standard way to call our API. End-points are built using a function-per-path segment or directly in the `call()` method. This makes use of magic methods so that we're future proofed against new end-points.
+This wrapper package is very simple, but provides you with a standard way to call our API. End-points are built using a function-per-path segment or directly in the `callPath()` method. This makes use of magic methods so that we're future proofed against new end-points.
 ```
 /* 
  * Read account API keys
@@ -33,11 +33,11 @@ This wrapper package is very simple, but provides you with a standard way to cal
 # Function-per-path method 
 $Client->accounts()->api()->via('get');
 
-# call() method
-$Client->call('accounts/api')->via('get');
+# callPath() method
+$Client->callPath('accounts/api')->via('get');
 ```
 
-If you need to add a value that doesn't fit into this method or is stored in a variable then the `call()` method is better and saves your from having to declare dynamic function names. Also, segments can be passed as parameters to segment methods:
+If you need to add a value that doesn't fit into this method or is stored in a variable then the `callPath()` method is better and saves your from having to declare dynamic function names. Also, segments can be passed as parameters to segment methods:
 ```
 /* 
  * Read one website

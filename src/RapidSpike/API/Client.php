@@ -167,6 +167,20 @@ class Client
     }
 
     /**
+     * Set the API call path (alternative to end-point method chaining
+     *
+     * @param string $path The API end-point to call.
+     *
+     * @return $this
+     */
+    public function callPath(string $path)
+    {
+        // Remove the first slash if its there
+        $this->path = $this::standardisePath($path);
+        return $this;
+    }
+
+    /**
      * Actually make a request using the Request class
      *
      * @param string $method
