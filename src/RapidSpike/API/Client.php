@@ -101,9 +101,9 @@ class Client
      *
      * @param \RapidSpike\API\KeyAuth $KeyAuth
      *
-     * @return $this
+     * @return \RapidSpike\API\Client
      */
-    public function setKeyAuth(KeyAuth $KeyAuth)
+    public function setKeyAuth(KeyAuth $KeyAuth): Client
     {
         $this->KeyAuth = $KeyAuth;
 
@@ -115,9 +115,9 @@ class Client
      *
      * @param array $arrQueryData
      *
-     * @return $this
+     * @return \RapidSpike\API\Client
      */
-    public function addQueryData(array $arrQueryData)
+    public function addQueryData(array $arrQueryData): Client
     {
         $this->arrQueryData = array_merge($this->arrQueryData, $arrQueryData);
 
@@ -129,9 +129,9 @@ class Client
      *
      * @param array $arrJsonBody
      *
-     * @return $this
+     * @return \RapidSpike\API\Client
      */
-    public function addJsonBody(array $arrJsonBody)
+    public function addJsonBody(array $arrJsonBody): Client
     {
         $this->arrJsonBody = array_merge($this->arrJsonBody, $arrJsonBody);
 
@@ -150,9 +150,9 @@ class Client
      * @param string $path The API end-point to call
      * @param array $arrSlug Any arguments to parse as part of the path
      *
-     * @return $this
+     * @return \RapidSpike\API\Client
      */
-    public function __call(string $path, array $arrSlug)
+    public function __call(string $path, array $arrSlug): Client
     {
         // Ensure the location is lowercase
         $this->path .= $this::standardisePath($path);
@@ -171,9 +171,9 @@ class Client
      *
      * @param string $path The API end-point to call.
      *
-     * @return $this
+     * @return \RapidSpike\API\Client
      */
-    public function callPath(string $path)
+    public function callPath(string $path): Client
     {
         // Remove the first slash if its there
         $this->path = $this::standardisePath($path);
@@ -188,7 +188,7 @@ class Client
      *
      * @return string
      */
-    private static function standardisePath(string $path)
+    private static function standardisePath(string $path): string
     {
         return ltrim(strtolower($path), '/') . '/';
     }
