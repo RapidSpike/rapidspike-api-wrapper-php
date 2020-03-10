@@ -75,6 +75,11 @@ class Client
     /**
      * @var array
      */
+    public $arrHeaders = [];
+
+    /**
+     * @var array
+     */
     public $arrQueryData = [];
 
     /**
@@ -106,6 +111,21 @@ class Client
     public function setKeyAuth(KeyAuth $KeyAuth): Client
     {
         $this->KeyAuth = $KeyAuth;
+
+        return $this;
+    }
+
+    /**
+     * Push a header to the class array - these will be used in the Request
+     *
+     * @param string $key Header key e.g. 'Content-Type'
+     * @param string $value Header value e.g. 'application/json'
+     *
+     * @return \RapidSpike\API\Client
+     */
+    public function addHeader(string $key, string $value): Client
+    {
+        $this->arrHeaders[$key] = $value;
 
         return $this;
     }

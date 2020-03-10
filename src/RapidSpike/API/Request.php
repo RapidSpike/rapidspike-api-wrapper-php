@@ -55,6 +55,11 @@ class Request
     private $Scope;
 
     /**
+     * @var array
+     */
+    private $arrHeaders = [];
+
+    /**
      * Sets the calling Client object to the class
      *
      * @param \RapidSpike\API\Client $Scope
@@ -62,6 +67,10 @@ class Request
     public function __construct(Client $Scope)
     {
         $this->Scope = $Scope;
+        $this->arrHeaders = [
+            'Accept' => 'application/json',
+            'User-Agent' => "RapidSpike-API-Wrapper-v{$this->Scope->version}",
+        ];
     }
 
     /**
@@ -74,14 +83,16 @@ class Request
      */
     public function call(string $method)
     {
+        // Merge this class's headers into the Scope's so this
+        // class's override the Scope's. For exmaple, if the
+        // Scope has a User-Agent set it will be ignored.
+        $arrHeaders = array_merge($this->Scope->arrHeaders, $this->arrHeaders);
+
         // Prepare the configuration for a new Guzzle client
         $arrConfig = [
             'base_uri' => $this->Scope->url,
             RequestOptions::TIMEOUT => $this->Scope->timeout,
-            RequestOptions::HEADERS => [
-                'Accept' => 'application/json',
-                'User-Agent' => "RapidSpike-API-Wrapper-v{$this->Scope->version}",
-            ],
+            RequestOptions::HEADERS => $arrHeaders,
         ];
 
         // Prepare the path with any query string
