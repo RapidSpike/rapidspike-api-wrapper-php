@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('UTC');
+
 /* =============================================================================
  *
  * This scripts gives an example of how to call basic test end-points available
@@ -35,6 +37,9 @@ if ($argc > 0) {
 if (!isset($params['url'])) {
     exit('Missing required parts. Required params: url.');
 }
+
+$params['public_key'] = isset($params['public_key']) ? $params['public_key'] : null;
+$params['private_key'] = isset($params['private_key']) ? $params['private_key'] : null;
 
 try {
     $obj = new RapidSpike\API\Client($params['public_key'], $params['private_key'], $params['url']);

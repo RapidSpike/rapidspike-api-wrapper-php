@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('UTC');
+
 /* =============================================================================
  *
  * This script is an example of how the Public/Private Key Authentication works.
@@ -34,6 +36,9 @@ if ($argc > 0) {
 if (!isset($params['url'], $params['public_key'], $params['private_key'])) {
     exit('Missing required parts. Required params: url, public_key and private_key.');
 }
+
+$params['public_key'] = isset($params['public_key']) ? $params['public_key'] : null;
+$params['private_key'] = isset($params['private_key']) ? $params['private_key'] : null;
 
 try {
     $Client = new RapidSpike\API\Client($params['public_key'], $params['private_key'], $params['url']);
