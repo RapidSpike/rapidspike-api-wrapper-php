@@ -251,7 +251,7 @@ class Client
 
             // Re-throw this exception to allow us to reset the request
             // so that the client object can continue to be used
-            $this->resetRequest();
+            $this->_resetRequest();
             throw $error;
         }
     }
